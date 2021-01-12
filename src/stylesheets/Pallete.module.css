@@ -16,7 +16,6 @@
   flex-direction: column;
   text-align: center;
   opacity: 0;
-  transition: transform 300ms ease, opacity 150ms ease;
 }
 
 .overlay-text > * {
@@ -38,6 +37,7 @@
 }
 
 .show {
+  transition: transform 300ms ease, opacity 150ms ease;
   transition-delay: 100ms;
   opacity: 1;
   transform: translateY(-50%) scale(1);
