@@ -1,12 +1,18 @@
 import React, { Component } from "react";
-import Palletes from "../utilities/seedColors";
 import ColorBox from "./ColorBox";
+import classes from "../stylesheets/Pallete.module.css";
 
 class Pallete extends Component {
   render() {
-    return Palletes[0].colors.map((color, idx) => (
-      <ColorBox name={color.name} code={color.color} key={idx} />
-    ));
+    const pallete = this.props.pallete;
+
+    return (
+      <div className={classes.Pallete}>
+        {pallete.colors.map((color) => (
+          <ColorBox name={color.name} code={color.color} key={color.name} />
+        ))}
+      </div>
+    );
   }
 }
 

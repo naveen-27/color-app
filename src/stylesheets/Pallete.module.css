@@ -1,0 +1,7 @@
+.Pallete {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(4, 25%);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
