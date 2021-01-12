@@ -19,6 +19,7 @@ class Pallete extends Component {
 
   render() {
     const pallete = this.props.pallete;
+    const overlayShowClass = this.state.copiedColor === "" ? "" : classes.show;
 
     return (
       <div className={classes["pallete-wrapper"]}>
@@ -34,11 +35,7 @@ class Pallete extends Component {
           ))}
         </div>
 
-        <div
-          className={`${classes["overlay-text"]} ${
-            this.state.copiedColor === "" ? "" : classes.show
-          }`}
-        >
+        <div className={`${classes["overlay-text"]} ${overlayShowClass}`}>
           <h1>Copied !</h1>
           <h3>{this.state.copiedColor}</h3>
         </div>

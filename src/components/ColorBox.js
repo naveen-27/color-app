@@ -29,6 +29,7 @@ class ColorBox extends Component {
 
   render() {
     const { name: color, code } = this.props;
+    const overShowClass = this.state.isColorCopied ? classes.copied : "";
 
     return (
       <div
@@ -48,9 +49,7 @@ class ColorBox extends Component {
         </div>
 
         <div
-          className={`${classes.overlay} ${
-            this.state.isColorCopied ? classes.copied : ""
-          }`}
+          className={`${classes.overlay} ${overShowClass}`}
           style={{ backgroundColor: code }}
         ></div>
       </div>
