@@ -16,7 +16,7 @@ class ColorBox extends Component {
       await navigator.clipboard.writeText(this.props.code);
       this.showAnimation();
     } catch (err) {
-      console.log("Failed");
+      this.props.showSnackbar("Failed To Copy. Try Again 😬", "failure");
     }
   }
 
