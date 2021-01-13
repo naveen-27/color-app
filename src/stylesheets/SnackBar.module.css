@@ -1,0 +1,25 @@
+.Snackbar {
+  position: absolute;
+  bottom: 4rem;
+  right: 1rem;
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  color: rgb(216, 220, 221);
+  border-radius: 0.5rem;
+  box-shadow: 0 0 2rem rgba(0, 0, 0, 0.35);
+  font-weight: 500;
+  transform: translateX(150%);
+  transition: transform 250ms ease;
+}
+
+.show {
+  transform: translateX(0);
+}
+
+.success {
+  background-color: rgb(36, 184, 95);
+}
+
+.failure {
+  background-color: rgb(170, 45, 34);
+}
