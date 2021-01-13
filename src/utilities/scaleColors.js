@@ -1,11 +1,11 @@
 import chroma from "chroma-js";
 
-function generateScaledPallete(pallete) {
-  let scaledPallete = pallete.colors.map((color) =>
+function generateScaledPalette(palette) {
+  let scaledPalette = palette.colors.map((color) =>
     scaleIndiviualColor(color.color, color.name)
   );
 
-  return scaledPallete;
+  return scaledPalette;
 }
 
 function scaleIndiviualColor(color, name) {
@@ -29,4 +29,4 @@ function scaleIndiviualColor(color, name) {
   return scaledColors;
 }
 
-export default generateScaledPallete;
+export default generateScaledPalette;

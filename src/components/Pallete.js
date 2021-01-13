@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import ColorBox from "./ColorBox";
 import Navbar from "./Navbar";
+import Footer from "./Footer";
 import SnackBar from "./SnackBar";
-import generateScaledPallete from "../utilities/scaleColors";
-import classes from "../stylesheets/Pallete.module.css";
+import generateScaledPalette from "../utilities/scaleColors";
+import classes from "../stylesheets/Palette.module.css";
 
-class Pallete extends Component {
+class Palette extends Component {
   constructor() {
     super();
     this.state = {
@@ -43,22 +44,22 @@ class Pallete extends Component {
   }
 
   render() {
-    const pallete = this.props.pallete;
+    const palette = this.props.palette;
     const overlayShowClass = this.state.copiedColor === "" ? "" : classes.show;
-    const scaledPallete = generateScaledPallete(pallete);
+    const scaledpalette = generateScaledPalette(palette);
 
-    const palleteToRender = [];
+    const paletteToRender = [];
 
-    for (let scaledColors of scaledPallete) {
-      palleteToRender.push(scaledColors[this.state.scaleValue - 1]);
+    for (let scaledColors of scaledpalette) {
+      paletteToRender.push(scaledColors[this.state.scaleValue - 1]);
     }
 
     return (
-      <div className={classes["pallete-wrapper"]}>
+      <div className={classes["palette-wrapper"]}>
         <Navbar setScaleValue={this.setScaleValue} />
 
-        <div className={classes.Pallete}>
-          {palleteToRender.map((color) => (
+        <div className={classes.Palette}>
+          {paletteToRender.map((color) => (
             <ColorBox
               name={color.name}
               code={color.color}
@@ -80,9 +81,11 @@ class Pallete extends Component {
           show={this.state.isVisible}
           status={this.state.snackbarStatus}
         />
+
+        <Footer content={palette.paletteName} emoji={palette.emoji} />
       </div>
     );
   }
 }
 
-export default Pallete;
+export default Palette;
