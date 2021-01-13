@@ -28,7 +28,7 @@ class Navbar extends Component {
             className={classes.range}
             type="range"
             min="1"
-            max="20"
+            max="10"
             onChange={this.handleChange}
             value={this.state.scaleValue}
           />
