@@ -2,8 +2,12 @@
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(4, 25%);
-  min-height: 100vh;
+  height: calc(100vh - 80px);
+}
+
+.pallete-wrapper {
   overflow: hidden;
+  min-height: 100vh;
 }
 
 .overlay-text {
