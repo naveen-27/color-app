@@ -1,11 +1,11 @@
-.Pallete {
+.Palette {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(4, 25%);
   height: calc(100vh - 80px);
 }
 
-.pallete-wrapper {
+.palette-wrapper {
   overflow: hidden;
   min-height: 100vh;
 }
