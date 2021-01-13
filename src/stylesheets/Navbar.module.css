@@ -1,0 +1,28 @@
+.Header {
+  display: flex;
+  align-items: center;
+  height: 40px;
+}
+
+.Logo {
+  background-color: rgb(195, 200, 204);
+  height: 100%;
+  padding: 0 1rem;
+  font-size: 1.5rem;
+  color: rgb(44, 62, 80);
+}
+
+.Logo > span {
+  font-weight: 400;
+}
+
+.input {
+  margin-left: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.range {
+  width: 200px;
+}
