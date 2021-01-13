@@ -1,16 +1,9 @@
-import seed from "./seedColors";
 import chroma from "chroma-js";
 
 function generateScaledPallete(pallete) {
-  const scaledPallete = {
-    ...pallete,
-    colors: [],
-  };
-
-  let scaledColor = pallete.colors.map((color) =>
+  let scaledPallete = pallete.colors.map((color) =>
     scaleIndiviualColor(color.color, color.name)
   );
-  scaledPallete.colors = scaledColor;
 
   return scaledPallete;
 }
@@ -36,4 +29,4 @@ function scaleIndiviualColor(color, name) {
   return scaledColors;
 }
 
-export default generateScaledPallete(seed[0]);
+export default generateScaledPallete;
