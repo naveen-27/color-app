@@ -19,11 +19,12 @@ function scaleIndiviualColor(color, name) {
 
   for (let scale = 1; scale <= 20; scale++) {
     let scaledColor = scalingFn(scale / 20)._rgb;
+    let hex = chroma(scaledColor).hex();
     let rgb = `rgb(${Math.floor(scaledColor[0])}, ${Math.floor(
       scaledColor[1]
     )}, ${Math.floor(scaledColor[2])})`;
 
-    scaledColors.push({ color: rgb, name: `${name} ${scale}` });
+    scaledColors.push({ rgb: rgb, name: `${name} ${scale}`, hex: hex });
   }
 
   return scaledColors;
