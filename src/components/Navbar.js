@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import SelectInput from "./SelectInput";
 import classes from "../stylesheets/Navbar.module.css";
 
 class Navbar extends Component {
@@ -33,6 +34,11 @@ class Navbar extends Component {
             value={this.state.scaleValue}
           />
         </div>
+
+        <SelectInput
+          setColorFormat={this.props.setColorFormat}
+          showSnackbar={this.props.showSnackbar}
+        />
       </header>
     );
   }

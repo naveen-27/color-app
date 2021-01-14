@@ -13,7 +13,7 @@ class ColorBox extends Component {
 
   async copyColorToClipboard() {
     try {
-      await navigator.clipboard.writeText(this.props.code);
+      await navigator.clipboard.writeText(this.props[this.props.copyFormat]);
       this.showAnimation();
     } catch (err) {
       this.props.showSnackbar("Failed To Copy. Try Again 😬", "failure");
@@ -24,17 +24,17 @@ class ColorBox extends Component {
     this.setState({ isColorCopied: true }, () => {
       setTimeout(() => this.setState({ isColorCopied: false }), 1000);
     });
-    this.props.setCopiedColor(this.props.code);
+    this.props.setCopiedColor(this.props[this.props.copyFormat]);
   }
 
   render() {
-    const { name: color, code } = this.props;
+    const { name: color, hex } = this.props;
     const overShowClass = this.state.isColorCopied ? classes.copied : "";
 
     return (
       <div
         className={classes.ColorBox}
-        style={{ backgroundColor: code }}
+        style={{ backgroundColor: hex }}
         tabIndex="0"
       >
         <button
@@ -50,7 +50,7 @@ class ColorBox extends Component {
 
         <div
           className={`${classes.overlay} ${overShowClass}`}
-          style={{ backgroundColor: code }}
+          style={{ backgroundColor: hex }}
         ></div>
       </div>
     );

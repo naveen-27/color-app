@@ -15,10 +15,12 @@ class Palette extends Component {
       isVisible: false,
       snackbarText: "",
       snackbarStatus: "failure",
+      copyFormat: "rgb",
     };
     this.setCopiedColor = this.setCopiedColor.bind(this);
     this.setScaleValue = this.setScaleValue.bind(this);
     this.setSnackbarVisible = this.setSnackbarVisible.bind(this);
+    this.setCopyFormat = this.setCopyFormat.bind(this);
   }
 
   setCopiedColor(code) {
@@ -43,26 +45,38 @@ class Palette extends Component {
     );
   }
 
+  setCopyFormat(format) {
+    this.setState({ copyFormat: format });
+  }
+
   render() {
     const palette = this.props.palette;
     const overlayShowClass = this.state.copiedColor === "" ? "" : classes.show;
-    const scaledpalette = generateScaledPalette(palette);
+    const scaledPalette = generateScaledPalette(palette);
+
+    console.log(scaledPalette);
 
     const paletteToRender = [];
 
-    for (let scaledColors of scaledpalette) {
+    for (let scaledColors of scaledPalette) {
       paletteToRender.push(scaledColors[this.state.scaleValue - 1]);
     }
 
     return (
       <div className={classes["palette-wrapper"]}>
-        <Navbar setScaleValue={this.setScaleValue} />
+        <Navbar
+          setScaleValue={this.setScaleValue}
+          setColorFormat={this.setCopyFormat}
+          showSnackbar={this.setSnackbarVisible}
+        />
 
         <div className={classes.Palette}>
           {paletteToRender.map((color) => (
             <ColorBox
               name={color.name}
-              code={color.color}
+              rgb={color.rgb}
+              hex={color.hex}
+              copyFormat={this.state.copyFormat}
               copiedClass={classes["show-msg"]}
               setCopiedColor={this.setCopiedColor}
               showSnackbar={this.setSnackbarVisible}
