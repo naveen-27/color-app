@@ -1,6 +1,6 @@
 {
-  "short_name": "Color App",
-  "name": "Color App made with react",
+  "short_name": "Color Picker",
+  "name": "Color App made with react - Color Picker",
   "icons": [
     {
       "src": "favicon.ico",
