@@ -32,13 +32,14 @@
 .overlay-text > h1 {
   font-size: 6rem;
   font-weight: 600;
-  text-shadow: 4px 5px 0 rgba(0, 0, 0, 0.35);
+  text-shadow: 0.25rem 0.5rem 5px rgba(0, 0, 0, 0.5);
   padding: 1rem;
 }
 
 .overlay-text > h3 {
   font-size: 2rem;
   margin-top: 1rem;
+  padding: 0.25rem 0;
 }
 
 .show {
