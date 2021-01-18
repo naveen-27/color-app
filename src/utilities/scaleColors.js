@@ -17,7 +17,7 @@ function scaleIndiviualColor(color, name) {
 
   const scaledColors = [];
 
-  for (let scale = 1; scale <= 20; scale++) {
+  for (let scale = 1; scale <= 15; scale++) {
     let scaledColor = scalingFn(scale / 20)._rgb;
     let hex = chroma(scaledColor).hex();
     let rgb = `rgb(${Math.floor(scaledColor[0])}, ${Math.floor(
