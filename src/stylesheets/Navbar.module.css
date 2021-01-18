@@ -10,7 +10,9 @@
   height: 100%;
   padding: 0 1rem;
   font-size: 1.5rem;
+  font-weight: 600;
   color: rgb(44, 62, 80);
+  text-decoration: none;
 }
 
 .Logo > span {

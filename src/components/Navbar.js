@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import SelectInput from "./SelectInput";
+import { Link } from "react-router-dom";
 import classes from "../stylesheets/Navbar.module.css";
 
 class Navbar extends Component {
@@ -19,9 +20,9 @@ class Navbar extends Component {
   render() {
     return (
       <header className={classes.Header}>
-        <h1 className={classes.Logo}>
+        <Link to="/" className={classes.Logo}>
           react<span>colorpicker</span>
-        </h1>
+        </Link>
 
         <div className={classes.input}>
           <span>Level : {this.state.scaleValue}</span>
