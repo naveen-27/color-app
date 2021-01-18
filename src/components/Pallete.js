@@ -53,9 +53,6 @@ class Palette extends Component {
     const palette = this.props.palette;
     const overlayShowClass = this.state.copiedColor === "" ? "" : classes.show;
     const scaledPalette = generateScaledPalette(palette);
-
-    console.log(scaledPalette);
-
     const paletteToRender = [];
 
     for (let scaledColors of scaledPalette) {
