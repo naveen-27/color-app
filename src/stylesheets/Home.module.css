@@ -1,12 +1,13 @@
 .Home {
-  min-height: 100vh;
+  height: 100vh;
+  overflow-y: scroll;
   background-color: #3c40c6;
 }
 
 .MiniPalettes {
   display: grid;
   width: min(100%, 800px);
-  margin: 2rem auto 0 auto;
+  margin: 2rem auto;
   grid-template-columns: repeat(3, 1fr);
   justify-items: center;
   align-content: center;
