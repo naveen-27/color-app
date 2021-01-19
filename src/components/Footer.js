@@ -1,23 +1,24 @@
 import React, { Component } from "react";
+import styled from "styled-components";
 
 class Footer extends Component {
   render() {
-    const styles = {
-      height: "40px",
-      display: "flex",
-      justifyContent: "flex-end",
-      alignItems: "center",
-      fontWeight: "600",
-      padding: "0 2rem",
-      color: "rgb(35, 49, 64)",
-      gap: "1rem",
-      wordSpacing: "3px",
-    };
+    const Footer = styled.footer`
+      height: 40px;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      font-weight: 600;
+      padding: 0 2rem;
+      color: rgb(35, 49, 64);
+      gap: 1rem;
+      word-spacing: 3px;
+    `;
 
     return (
-      <footer style={styles}>
+      <Footer>
         {this.props.content} <span>{this.props.emoji}</span>
-      </footer>
+      </Footer>
     );
   }
 }
