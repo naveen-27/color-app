@@ -21,11 +21,10 @@
   align-items: flex-end;
 }
 
-.color-name,
 .link,
 .box-btn {
   padding: 0.5rem 1rem;
-  color: #ffffffbd;
+  color: #edf1f2;
   font-size: 0.85rem;
   font-weight: 500;
 }

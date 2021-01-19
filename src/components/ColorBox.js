@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import getContrastColor from "../utilities/luminance";
+import styled from "styled-components";
 import classes from "../stylesheets/ColorBox.module.css";
 
 class ColorBox extends Component {
@@ -38,6 +40,14 @@ class ColorBox extends Component {
       </Link>
     );
 
+    const ColorName = styled.span`
+      padding: 0.5rem 1rem;
+      color: ${getContrastColor(hex)};
+      // color: #edf1f2;
+      font-size: 0.85rem;
+      font-weight: 500;
+    `;
+
     return (
       <div
         className={classes.ColorBox}
@@ -51,7 +61,7 @@ class ColorBox extends Component {
           COPY
         </button>
         <div className={classes.boxBottom}>
-          <span className={classes["color-name"]}>{color}</span>
+          <ColorName>{color}</ColorName>
           {!isMoreHidden && moreColors}
         </div>
 
