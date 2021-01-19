@@ -42,10 +42,12 @@
   margin-top: 0.25rem;
 }
 
-.MiniPalette:hover {
+.MiniPalette:hover,
+.MiniPalette:focus {
   transform: scale(1.1);
 }
 
-.MiniPalette:hover::after {
+.MiniPalette:hover::after,
+.MiniPalette:focus::after {
   opacity: 1;
 }
