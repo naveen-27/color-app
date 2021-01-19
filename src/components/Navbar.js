@@ -18,23 +18,27 @@ class Navbar extends Component {
   }
 
   render() {
+    const range = (
+      <div className={classes.input}>
+        <span>Level : {this.state.scaleValue}</span>
+        <input
+          className={classes.range}
+          type="range"
+          min="1"
+          max="15"
+          onChange={this.handleChange}
+          value={this.state.scaleValue}
+        />
+      </div>
+    );
+
     return (
       <header className={classes.Header}>
         <Link to="/" className={classes.Logo}>
           react<span>colorpicker</span>
         </Link>
 
-        <div className={classes.input}>
-          <span>Level : {this.state.scaleValue}</span>
-          <input
-            className={classes.range}
-            type="range"
-            min="1"
-            max="10"
-            onChange={this.handleChange}
-            value={this.state.scaleValue}
-          />
-        </div>
+        {!this.props.isRangeHidden && range}
 
         <SelectInput
           setColorFormat={this.props.setColorFormat}

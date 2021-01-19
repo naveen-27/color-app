@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import classes from "../stylesheets/ColorBox.module.css";
 
 class ColorBox extends Component {
@@ -28,8 +29,14 @@ class ColorBox extends Component {
   }
 
   render() {
-    const { name: color, hex } = this.props;
+    const { name: color, hex, paletteId, colorId, isMoreHidden } = this.props;
     const overShowClass = this.state.isColorCopied ? classes.copied : "";
+
+    const moreColors = (
+      <Link className={classes.link} to={`/palette/${paletteId}/${colorId}`}>
+        MORE
+      </Link>
+    );
 
     return (
       <div
@@ -45,7 +52,7 @@ class ColorBox extends Component {
         </button>
         <div className={classes.boxBottom}>
           <span className={classes["color-name"]}>{color}</span>
-          <div className={classes.link}>MORE</div>
+          {!isMoreHidden && moreColors}
         </div>
 
         <div

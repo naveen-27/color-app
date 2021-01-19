@@ -15,19 +15,23 @@ function scaleIndiviualColor(color, name) {
     chroma(color).brighten(2),
   ]);
 
-  const scaledColors = [];
+  const scaledColors = {
+    id: name,
+    colors: [],
+  };
 
   for (let scale = 1; scale <= 15; scale++) {
-    let scaledColor = scalingFn(scale / 20)._rgb;
+    let scaledColor = scalingFn(scale / 15)._rgb;
     let hex = chroma(scaledColor).hex();
     let rgb = `rgb(${Math.floor(scaledColor[0])}, ${Math.floor(
       scaledColor[1]
     )}, ${Math.floor(scaledColor[2])})`;
 
-    scaledColors.push({ rgb: rgb, name: `${name} ${scale}`, hex: hex });
+    scaledColors.colors.push({ rgb: rgb, name: `${name} ${scale}`, hex: hex });
   }
 
   return scaledColors;
 }
 
+export { scaleIndiviualColor };
 export default generateScaledPalette;

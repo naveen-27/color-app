@@ -52,11 +52,46 @@ class Palette extends Component {
   render() {
     const palette = this.props.palette;
     const overlayShowClass = this.state.copiedColor === "" ? "" : classes.show;
-    const scaledPalette = generateScaledPalette(palette);
-    const paletteToRender = [];
+    let colorBoxes;
 
-    for (let scaledColors of scaledPalette) {
-      paletteToRender.push(scaledColors[this.state.scaleValue - 1]);
+    if (this.props.isSinglePalette) {
+      colorBoxes = palette.scaledColors.colors.map((color) => (
+        <ColorBox
+          name={color.name}
+          rgb={color.rgb}
+          hex={color.hex}
+          copyFormat={this.state.copyFormat}
+          setCopiedColor={this.setCopiedColor}
+          showSnackbar={this.setSnackbarVisible}
+          key={color.name}
+          isMoreHidden={true}
+        />
+      ));
+    } else {
+      const scaledPalette = generateScaledPalette(palette);
+      const paletteToRender = [];
+
+      for (let scaledColors of scaledPalette) {
+        let indiviualColor = {
+          id: scaledColors.id,
+          colors: scaledColors.colors[this.state.scaleValue - 1],
+        };
+        paletteToRender.push(indiviualColor);
+      }
+
+      colorBoxes = paletteToRender.map((color) => (
+        <ColorBox
+          paletteId={palette.id}
+          colorId={color.id}
+          name={color.colors.name}
+          rgb={color.colors.rgb}
+          hex={color.colors.hex}
+          copyFormat={this.state.copyFormat}
+          setCopiedColor={this.setCopiedColor}
+          showSnackbar={this.setSnackbarVisible}
+          key={color.id}
+        />
+      ));
     }
 
     return (
@@ -65,22 +100,10 @@ class Palette extends Component {
           setScaleValue={this.setScaleValue}
           setColorFormat={this.setCopyFormat}
           showSnackbar={this.setSnackbarVisible}
+          isRangeHidden={this.props.isSinglePalette}
         />
 
-        <div className={classes.Palette}>
-          {paletteToRender.map((color) => (
-            <ColorBox
-              name={color.name}
-              rgb={color.rgb}
-              hex={color.hex}
-              copyFormat={this.state.copyFormat}
-              copiedClass={classes["show-msg"]}
-              setCopiedColor={this.setCopiedColor}
-              showSnackbar={this.setSnackbarVisible}
-              key={color.name}
-            />
-          ))}
-        </div>
+        <div className={classes.Palette}>{colorBoxes}</div>
 
         <div className={`${classes["overlay-text"]} ${overlayShowClass}`}>
           <h1>Copied !</h1>
