@@ -2,14 +2,75 @@
   height: 100vh;
   overflow-y: scroll;
   background-color: #3c40c6;
+  background-image: url("../images/app-background.svg");
+  padding: 0 2rem;
 }
 
 .MiniPalettes {
   display: grid;
   width: min(100%, 800px);
-  margin: 2rem auto;
+  margin: 1rem auto 4rem auto;
   grid-template-columns: repeat(3, 1fr);
   justify-items: center;
   align-content: center;
   gap: 2rem;
+}
+
+.Home > header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 1rem;
+}
+
+.Logo,
+.Logo + a {
+  color: #edf1f2;
+}
+
+.Logo + a {
+  text-decoration: none;
+  position: relative;
+  font-size: 1rem;
+}
+
+.Logo + a::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  border-radius: 0.5rem;
+  background-color: #ea481e;
+  transform: scaleX(0);
+  transform-origin: 100%;
+  transition: transform 200ms ease-in;
+}
+
+.Logo + a:hover::after,
+.Logo + a:focus::after {
+  transform-origin: 0%;
+  transform: scale(1);
+}
+
+@media (max-width: 950px) {
+  .MiniPalettes {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 550px) {
+  .MiniPalettes {
+    grid-template-columns: 1fr;
+  }
+
+  .Home > header {
+    justify-content: space-between;
+    padding: 1rem 0.5rem;
+  }
+
+  .Logo {
+    font-size: 1.5rem;
+  }
 }
