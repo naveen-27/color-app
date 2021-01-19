@@ -25,7 +25,7 @@ class Palette extends Component {
 
   setCopiedColor(code) {
     this.setState({ copiedColor: code }, () => {
-      setTimeout(() => this.setState({ copiedColor: "" }), 1000);
+      setTimeout(() => this.setState({ copiedColor: "" }), 950);
     });
   }
 
