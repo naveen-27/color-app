@@ -1,0 +1,29 @@
+.Drawer {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: min(325px, 100vw);
+  padding: 1rem;
+  height: 100vh;
+  background-color: #f2f5f6;
+  box-shadow: 2px 0 1rem rgba(0, 0, 0, 0.35);
+  transform: translateX(-105%);
+  transition: transform 300ms ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.close {
+  width: 25px;
+  fill: #233240;
+  align-self: flex-end;
+}
+
+.close:hover {
+  opacity: 0.75;
+}
+
+.open {
+  transform: translateX(0);
+  z-index: 5;
+}
