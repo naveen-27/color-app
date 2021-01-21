@@ -17,14 +17,16 @@ class NewPaletteHeader extends Component {
     return (
       <header className={classes.Header}>
         <div className={classes.new}>
-          <div
-            className={classes["add-btn"]}
-            onClick={this.handleClick}
-            role="button"
-            aria-label="color picker form"
-          >
-            <Add className={classes.add} />
-          </div>
+          {!this.props.isDrawerOpen && (
+            <div
+              className={classes["add-btn"]}
+              onClick={this.handleClick}
+              role="button"
+              aria-label="color picker form"
+            >
+              <Add className={classes.add} />
+            </div>
+          )}
           <h3 className={classes.label}>Create A Palette</h3>
         </div>
 

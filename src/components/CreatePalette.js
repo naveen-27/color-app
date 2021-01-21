@@ -1,6 +1,16 @@
 import React, { Component } from "react";
 import Header from "./NewPaletteHeader";
 import Drawer from "./Drawer";
+import styled from "styled-components";
+
+const PaletteWrapper = styled.div`
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: ${(props) =>
+    props.children.props.isDrawerOpen ? "calc(100% - 335px)" : "100%"};
+  transition: width 300ms ease;
+`;
 
 class CreatePalette extends Component {
   constructor() {
@@ -23,16 +33,15 @@ class CreatePalette extends Component {
   }
 
   render() {
-    const style = {
-      filter: this.state.isDrawerOpen ? "blur(2px)" : "none",
-      pointerEvents: this.state.isDrawerOpen ? "none" : "all",
-    };
-
     return (
       <>
-        <div style={style}>
-          <Header toggleForm={this.toggleDrawer} />
-        </div>
+        <PaletteWrapper>
+          <Header
+            toggleForm={this.toggleDrawer}
+            isDrawerOpen={this.state.isDrawerOpen}
+          />
+        </PaletteWrapper>
+
         <Drawer
           open={this.state.isDrawerOpen}
           toggleForm={this.toggleDrawer}
