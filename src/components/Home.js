@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import seededPalettes from "../utilities/seedColors";
 import MiniPalette from "./MiniPalette";
 import classes from "../stylesheets/Home.module.css";
@@ -9,7 +10,7 @@ class Home extends Component {
       <div className={classes.Home}>
         <header>
           <h1 className={classes.Logo}>React Colors</h1>
-          <a href="/create-palette">Create Palette</a>
+          <Link to="/palette/new">Create Palette</Link>
         </header>
 
         <main className={classes.MiniPalettes}>
