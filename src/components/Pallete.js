@@ -15,7 +15,7 @@ class Palette extends Component {
       isVisible: false,
       snackbarText: "",
       snackbarStatus: "failure",
-      copyFormat: "rgb",
+      copyFormat: "hex-hash",
     };
     this.setCopiedColor = this.setCopiedColor.bind(this);
     this.setScaleValue = this.setScaleValue.bind(this);

@@ -16,18 +16,32 @@ class ColorBox extends Component {
 
   async copyColorToClipboard() {
     try {
-      await navigator.clipboard.writeText(this.props[this.props.copyFormat]);
-      this.showAnimation();
+      let copyText;
+      switch (this.props.copyFormat) {
+        case "hex-hash":
+          copyText = this.props.hex;
+          break;
+        case "hex":
+          copyText = this.props.hex.slice(1);
+          break;
+        default:
+          copyText = this.props.rgb;
+          break;
+      }
+
+      await navigator.clipboard.writeText(copyText);
+      this.showAnimation(copyText);
     } catch (err) {
+      console.log(err);
       this.props.showSnackbar("Failed To Copy. Try Again 😬", "failure");
     }
   }
 
-  showAnimation() {
+  showAnimation(colorCopied) {
     this.setState({ isColorCopied: true }, () => {
-      setTimeout(() => this.setState({ isColorCopied: false }), 1000);
+      setTimeout(() => this.setState({ isColorCopied: false }), 1100);
     });
-    this.props.setCopiedColor(this.props[this.props.copyFormat]);
+    this.props.setCopiedColor(colorCopied);
   }
 
   render() {

@@ -7,7 +7,7 @@ class SelectInput extends Component {
   constructor() {
     super();
     this.state = {
-      format: "rgb",
+      format: "hex-hash",
     };
     this.handleChange = this.handleChange.bind(this);
   }
@@ -27,8 +27,9 @@ class SelectInput extends Component {
           value={this.state.format}
           onChange={this.handleChange}
         >
-          <MenuItem value={"rgb"}>rgb(red, green, blue)</MenuItem>
-          <MenuItem value={"hex"}>Hexadecimal</MenuItem>
+          <MenuItem value={"rgb"}>rgb - rgb(123, 215, 12)</MenuItem>
+          <MenuItem value={"hex-hash"}>Hex - #fd51ce</MenuItem>
+          <MenuItem value={"hex"}>Hex - fd51ce</MenuItem>
         </Select>
       </FormControl>
     );
