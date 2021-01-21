@@ -3,6 +3,7 @@ import { Switch, Route } from "react-router-dom";
 import Home from "./components/Home";
 import colorPalettes from "./utilities/seedColors";
 import Palette from "./components/Pallete";
+import CreatePalette from "./components/CreatePalette";
 import { scaleIndiviualColor } from "./utilities/scaleColors";
 
 class App extends Component {
@@ -38,6 +39,7 @@ class App extends Component {
       <div className="App">
         <Switch>
           <Route exact path="/" component={Home} />
+          <Route exact path="/palette/new" component={CreatePalette} />
           <Route exact path="/palette/:id" render={this.generatePalette} />
           <Route
             exact
