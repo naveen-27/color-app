@@ -7,8 +7,10 @@ class CreatePalette extends Component {
     super();
     this.state = {
       isDrawerOpen: false,
+      colors: [],
     };
     this.toggleDrawer = this.toggleDrawer.bind(this);
+    this.addColorToPalette = this.addColorToPalette.bind(this);
   }
 
   toggleDrawer() {
@@ -16,16 +18,26 @@ class CreatePalette extends Component {
     document.body.classList.toggle("blur");
   }
 
+  addColorToPalette(newColor) {
+    this.setState({ colors: [...this.state.colors, newColor] });
+  }
+
   render() {
     const style = {
       filter: this.state.isDrawerOpen ? "blur(2px)" : "none",
+      pointerEvents: this.state.isDrawerOpen ? "none" : "all",
     };
+
     return (
       <>
         <div style={style}>
           <Header toggleForm={this.toggleDrawer} />
         </div>
-        <Drawer open={this.state.isDrawerOpen} toggleForm={this.toggleDrawer} />
+        <Drawer
+          open={this.state.isDrawerOpen}
+          toggleForm={this.toggleDrawer}
+          addColor={this.addColorToPalette}
+        />
       </>
     );
   }
