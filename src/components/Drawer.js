@@ -59,7 +59,7 @@ class Drawer extends Component {
 
         <div className={classes["btn-grp"]}>
           <Button variant="contained" color="primary">
-            CREATE PALETTE
+            CLEAR PALETTE
           </Button>
           <Button variant="contained" color="secondary">
             RANDOM COLOR
@@ -84,8 +84,8 @@ class Drawer extends Component {
           />
 
           <Button
+            variant="contained"
             type="submit"
-            color="default"
             fullWidth={true}
             style={{ backgroundColor: this.state.color.hex, color: "#ffffff" }}
           >
