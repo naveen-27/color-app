@@ -30,7 +30,7 @@ class Drawer extends Component {
     e.preventDefault();
 
     this.props.addColor({
-      hex: this.state.color.hex,
+      color: this.state.color.hex.toLocaleUpperCase(),
       name: this.state.colorName,
     });
     this.setState({ colorName: "" });
@@ -79,6 +79,8 @@ class Drawer extends Component {
             fullWidth={true}
             value={this.state.colorName}
             onChange={this.handleChange}
+            error={this.props.inputErr !== null}
+            helperText={this.props.inputErr}
           />
 
           <Button
