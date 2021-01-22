@@ -1,11 +1,12 @@
 import React, { Component } from "react";
+import { motion } from "framer-motion";
 import ColorBox from "./ColorBox";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import SnackBar from "./SnackBar";
+import ErrorRoute from "./ErrorRoute";
 import generateScaledPalette from "../utilities/scaleColors";
 import classes from "../stylesheets/Palette.module.css";
-import { motion } from "framer-motion";
 
 class Palette extends Component {
   constructor() {
@@ -54,6 +55,10 @@ class Palette extends Component {
     const palette = this.props.palette;
     const overlayShowClass = this.state.copiedColor === "" ? "" : classes.show;
     let colorBoxes;
+
+    if (!palette) {
+      return <ErrorRoute />;
+    }
 
     if (this.props.isSinglePalette) {
       colorBoxes = palette.scaledColors.colors.map((color) => (
