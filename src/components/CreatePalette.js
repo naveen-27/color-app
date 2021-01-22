@@ -3,7 +3,7 @@ import Header from "./NewPaletteHeader";
 import Drawer from "./Drawer";
 import DraggablePalette from "./DraggablePalette";
 import PaletteMetaForm from "./PaletteMetaForm";
-import { arrayMove } from "react-sortable-hoc";
+import arrayMove from "array-move";
 import styled from "styled-components";
 import palette from "../utilities/seedColors";
 
