@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { SortableContainer } from "react-sortable-hoc";
 import DraggableColorBox from "./DraggableColorBox";
 import classes from "../stylesheets/DraggablePalette.module.css";
 
@@ -8,8 +9,9 @@ class DraggablePalette extends Component {
 
     return (
       <div className={classes.Palette}>
-        {palette.map((color) => (
+        {palette.map((color, idx) => (
           <DraggableColorBox
+            index={idx}
             name={color.name}
             hex={color.color}
             key={color.name}
@@ -21,4 +23,4 @@ class DraggablePalette extends Component {
   }
 }
 
-export default DraggablePalette;
+export default SortableContainer(DraggablePalette);

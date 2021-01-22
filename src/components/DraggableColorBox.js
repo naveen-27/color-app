@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import { SortableElement } from "react-sortable-hoc";
 import getContrastColor from "../utilities/luminance";
 import { ReactComponent as Delete } from "../images/delete.svg";
 
@@ -62,4 +63,4 @@ class DraggableColorBox extends Component {
   }
 }
 
-export default DraggableColorBox;
+export default SortableElement(DraggableColorBox);

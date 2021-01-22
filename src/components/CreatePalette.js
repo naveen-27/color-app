@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Header from "./NewPaletteHeader";
 import Drawer from "./Drawer";
 import DraggablePalette from "./DraggablePalette";
+import { arrayMove } from "react-sortable-hoc";
 import styled from "styled-components";
 import palette from "../utilities/seedColors";
 
@@ -123,6 +124,12 @@ class CreatePalette extends Component {
     this.props.savePalette(newPalette);
   }
 
+  onSortEnd = ({ oldIndex, newIndex }) => {
+    this.setState(({ colors }) => ({
+      colors: arrayMove(colors, oldIndex, newIndex),
+    }));
+  };
+
   render() {
     return (
       <>
@@ -136,6 +143,8 @@ class CreatePalette extends Component {
           <DraggablePalette
             palette={this.state.colors}
             deleteColor={this.deleteColor}
+            axis="xy"
+            onSortEnd={this.onSortEnd}
           />
         </PaletteWrapper>
 
