@@ -58,10 +58,18 @@ class Drawer extends Component {
         />
 
         <div className={classes["btn-grp"]}>
-          <Button variant="contained" color="primary">
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={this.props.clearPalette}
+          >
             CLEAR PALETTE
           </Button>
-          <Button variant="contained" color="secondary">
+          <Button
+            variant="contained"
+            color="secondary"
+            onClick={this.props.getRandomColor}
+          >
             RANDOM COLOR
           </Button>
         </div>

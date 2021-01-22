@@ -26,6 +26,9 @@ class CreatePalette extends Component {
     this.addColorToPalette = this.addColorToPalette.bind(this);
     this.validateColor = this.validateColor.bind(this);
     this.savePalette = this.savePalette.bind(this);
+    this.deleteColor = this.deleteColor.bind(this);
+    this.clearPalette = this.clearPalette.bind(this);
+    this.randomColor = this.randomColor.bind(this);
   }
 
   toggleDrawer() {
@@ -74,6 +77,41 @@ class CreatePalette extends Component {
     };
   }
 
+  deleteColor(colorName) {
+    const colors = this.state.colors.filter(
+      (color) => color.name !== colorName
+    );
+    this.setState({ colors });
+  }
+
+  clearPalette() {
+    this.setState({ colors: [] });
+  }
+
+  randomColor() {
+    let isColorUnique, isPaletteFull;
+    isPaletteFull = this.state.colors.length === 20;
+
+    do {
+      let generatedColor = this.props.getRandomColor();
+      isColorUnique = this.state.colors.every(
+        (color) =>
+          color.name.toLocaleLowerCase() !==
+          generatedColor.name.toLocaleLowerCase()
+      );
+
+      if (isPaletteFull) {
+        this.setState({ err: "Palettte Full" }, () => {
+          setTimeout(() => this.setState({ err: null }), 1000);
+        });
+      }
+
+      if (isColorUnique && !isPaletteFull) {
+        this.setState({ colors: [...this.state.colors, generatedColor] });
+      }
+    } while (!isColorUnique);
+  }
+
   savePalette() {
     let paletteName = "Test Palette";
     const newPalette = {
@@ -95,13 +133,18 @@ class CreatePalette extends Component {
             savePalette={this.savePalette}
           />
 
-          <DraggablePalette palette={this.state.colors} />
+          <DraggablePalette
+            palette={this.state.colors}
+            deleteColor={this.deleteColor}
+          />
         </PaletteWrapper>
 
         <Drawer
           open={this.state.isDrawerOpen}
           toggleForm={this.toggleDrawer}
           addColor={this.addColorToPalette}
+          clearPalette={this.clearPalette}
+          getRandomColor={this.randomColor}
           inputErr={this.state.err}
         />
       </>

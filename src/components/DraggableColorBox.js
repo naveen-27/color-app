@@ -30,6 +30,15 @@ const Info = styled.div`
 `;
 
 class DraggableColorBox extends Component {
+  constructor() {
+    super();
+    this.delete = this.delete.bind(this);
+  }
+
+  delete() {
+    this.props.delete(this.props.name);
+  }
+
   render() {
     const { hex, name } = this.props;
 
@@ -43,7 +52,10 @@ class DraggableColorBox extends Component {
       <Box style={{ backgroundColor: hex }}>
         <Info>
           <Text>{name}</Text>
-          <Delete style={{ width: "25px", height: "20px" }} />
+          <Delete
+            style={{ width: "25px", height: "20px" }}
+            onClick={this.delete}
+          />
         </Info>
       </Box>
     );

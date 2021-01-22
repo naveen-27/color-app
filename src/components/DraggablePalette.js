@@ -13,6 +13,7 @@ class DraggablePalette extends Component {
             name={color.name}
             hex={color.color}
             key={color.name}
+            delete={this.props.deleteColor}
           />
         ))}
       </div>

@@ -15,6 +15,7 @@ class App extends Component {
     this.savePalette = this.savePalette.bind(this);
     this.generatePalette = this.generatePalette.bind(this);
     this.getScaledPalette = this.getScaledPalette.bind(this);
+    this.getRandomColor = this.getRandomColor.bind(this);
   }
 
   generatePalette(routeParams) {
@@ -50,6 +51,14 @@ class App extends Component {
     localStorage.setItem("palettes", JSON.stringify(updatedPaletteList));
   }
 
+  getRandomColor() {
+    const palette = Math.floor(Math.random() * this.state.palettes.length);
+    const color = Math.floor(
+      Math.random() * this.state.palettes[palette].colors.length
+    );
+    return this.state.palettes[palette].colors[color];
+  }
+
   render() {
     return (
       <div className="App">
@@ -62,7 +71,12 @@ class App extends Component {
           <Route
             exact
             path="/palette/new"
-            component={() => <CreatePalette savePalette={this.savePalette} />}
+            component={() => (
+              <CreatePalette
+                savePalette={this.savePalette}
+                getRandomColor={this.getRandomColor}
+              />
+            )}
           />
           <Route exact path="/palette/:id" render={this.generatePalette} />
           <Route
