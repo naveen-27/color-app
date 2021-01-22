@@ -17,6 +17,7 @@ class App extends Component {
     this.getScaledPalette = this.getScaledPalette.bind(this);
     this.getRandomColor = this.getRandomColor.bind(this);
     this.isPaletteNameUnique = this.isPaletteNameUnique.bind(this);
+    this.deletePalette = this.deletePalette.bind(this);
   }
 
   generatePalette(routeParams) {
@@ -67,6 +68,14 @@ class App extends Component {
     );
   }
 
+  deletePalette(name) {
+    const updatedPalettes = this.state.palettes.filter(
+      ({ paletteName }) => paletteName !== name
+    );
+    this.setState({ palettes: updatedPalettes });
+    localStorage.setItem("palettes", JSON.stringify(updatedPalettes));
+  }
+
   render() {
     return (
       <div className="App">
@@ -74,7 +83,12 @@ class App extends Component {
           <Route
             exact
             path="/"
-            component={() => <Home palettes={this.state.palettes} />}
+            component={() => (
+              <Home
+                palettes={this.state.palettes}
+                deletePalette={this.deletePalette}
+              />
+            )}
           />
           <Route
             exact

@@ -14,7 +14,11 @@ class Home extends Component {
 
         <main className={classes.MiniPalettes}>
           {this.props.palettes.map((palette) => (
-            <MiniPalette palette={palette} key={palette.id} />
+            <MiniPalette
+              palette={palette}
+              key={palette.id}
+              deletePalette={this.props.deletePalette}
+            />
           ))}
         </main>
       </div>

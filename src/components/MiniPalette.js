@@ -4,6 +4,15 @@ import { ReactComponent as Delete } from "../images/delete.svg";
 import classes from "../stylesheets/MiniPalette.module.css";
 
 class MiniPalette extends Component {
+  constructor() {
+    super();
+    this.delete = this.delete.bind(this);
+  }
+
+  delete() {
+    this.props.deletePalette(this.props.palette.paletteName);
+  }
+
   render() {
     const palette = this.props.palette;
 
@@ -24,7 +33,7 @@ class MiniPalette extends Component {
           <span>{palette.emoji}</span>
         </Link>
 
-        <div className={classes["delete-btn"]}>
+        <div className={classes["delete-btn"]} onClick={this.delete}>
           <Delete />
         </div>
       </div>
