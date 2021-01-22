@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import seededPalettes from "../utilities/seedColors";
 import MiniPalette from "./MiniPalette";
 import classes from "../stylesheets/Home.module.css";
 
@@ -14,7 +13,7 @@ class Home extends Component {
         </header>
 
         <main className={classes.MiniPalettes}>
-          {seededPalettes.map((palette) => (
+          {this.props.palettes.map((palette) => (
             <MiniPalette palette={palette} key={palette.id} />
           ))}
         </main>

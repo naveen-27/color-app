@@ -25,6 +25,7 @@ class CreatePalette extends Component {
     this.toggleDrawer = this.toggleDrawer.bind(this);
     this.addColorToPalette = this.addColorToPalette.bind(this);
     this.validateColor = this.validateColor.bind(this);
+    this.savePalette = this.savePalette.bind(this);
   }
 
   toggleDrawer() {
@@ -73,6 +74,17 @@ class CreatePalette extends Component {
     };
   }
 
+  savePalette() {
+    let paletteName = "Test Palette";
+    const newPalette = {
+      paletteName,
+      id: paletteName.toLocaleLowerCase().replace(" ", "-"),
+      emoji: "🧨",
+      colors: this.state.colors,
+    };
+    this.props.savePalette(newPalette);
+  }
+
   render() {
     return (
       <>
@@ -80,6 +92,7 @@ class CreatePalette extends Component {
           <Header
             toggleForm={this.toggleDrawer}
             isDrawerOpen={this.state.isDrawerOpen}
+            savePalette={this.savePalette}
           />
 
           <DraggablePalette palette={this.state.colors} />

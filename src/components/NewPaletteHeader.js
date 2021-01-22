@@ -1,16 +1,23 @@
 import React, { Component } from "react";
-import { ReactComponent as Add } from "../images/add.svg";
+import { withRouter } from "react-router-dom";
 import Button from "@material-ui/core/Button";
+import { ReactComponent as Add } from "../images/add.svg";
 import classes from "../stylesheets/NewPaletteHeader.module.css";
 
 class NewPaletteHeader extends Component {
   constructor() {
     super();
     this.handleClick = this.handleClick.bind(this);
+    this.save = this.save.bind(this);
   }
 
   handleClick() {
     this.props.toggleForm();
+  }
+
+  save() {
+    this.props.savePalette();
+    this.props.history.push("/");
   }
 
   render() {
@@ -31,10 +38,14 @@ class NewPaletteHeader extends Component {
         </div>
 
         <div className={classes["btn-group"]}>
-          <Button variant="contained" color="primary">
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={this.props.history.goBack}
+          >
             GO BACK
           </Button>
-          <Button variant="contained" color="secondary">
+          <Button variant="contained" color="secondary" onClick={this.save}>
             SAVE PALETTE
           </Button>
         </div>
@@ -43,4 +54,4 @@ class NewPaletteHeader extends Component {
   }
 }
 
-export default NewPaletteHeader;
+export default withRouter(NewPaletteHeader);

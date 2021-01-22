@@ -7,9 +7,19 @@ import CreatePalette from "./components/CreatePalette";
 import { scaleIndiviualColor } from "./utilities/scaleColors";
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      palettes: JSON.parse(localStorage.getItem("palettes")) || colorPalettes,
+    };
+    this.savePalette = this.savePalette.bind(this);
+    this.generatePalette = this.generatePalette.bind(this);
+    this.getScaledPalette = this.getScaledPalette.bind(this);
+  }
+
   generatePalette(routeParams) {
     const paletteId = routeParams.match.params.id;
-    const foundPalette = colorPalettes.find(
+    const foundPalette = this.state.palettes.find(
       (palette) => palette.id === paletteId
     );
 
@@ -18,7 +28,7 @@ class App extends Component {
 
   getScaledPalette(routeParams) {
     const { paletteId, colorId } = routeParams.match.params;
-    const foundPalette = colorPalettes.find(
+    const foundPalette = this.state.palettes.find(
       (palette) => palette.id === paletteId
     );
     const color = foundPalette.colors.find((color) => color.name === colorId);
@@ -34,12 +44,26 @@ class App extends Component {
     return <Palette palette={palette} isSinglePalette={true} />;
   }
 
+  savePalette(newPalette) {
+    const updatedPaletteList = [...this.state.palettes, newPalette];
+    this.setState({ palettes: updatedPaletteList });
+    localStorage.setItem("palettes", JSON.stringify(updatedPaletteList));
+  }
+
   render() {
     return (
       <div className="App">
         <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/palette/new" component={CreatePalette} />
+          <Route
+            exact
+            path="/"
+            component={() => <Home palettes={this.state.palettes} />}
+          />
+          <Route
+            exact
+            path="/palette/new"
+            component={() => <CreatePalette savePalette={this.savePalette} />}
+          />
           <Route exact path="/palette/:id" render={this.generatePalette} />
           <Route
             exact
