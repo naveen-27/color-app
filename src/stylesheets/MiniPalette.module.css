@@ -7,6 +7,8 @@
   border-radius: 0.15rem;
   position: relative;
   transition: transform 200ms ease;
+  display: flex;
+  flex-direction: column;
 }
 
 .MiniPalette::after {
@@ -40,6 +42,9 @@
   justify-content: space-between;
   align-items: center;
   margin-top: 0.25rem;
+  margin-top: auto;
+  text-decoration: none;
+  color: #1d2935;
 }
 
 .MiniPalette:hover,
@@ -50,4 +55,25 @@
 .MiniPalette:hover::after,
 .MiniPalette:focus::after {
   opacity: 1;
+}
+
+.MiniPalette:hover .delete-btn {
+  opacity: 1;
+}
+
+.delete-btn {
+  width: 25px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: #d31a1f;
+  padding: 0.25rem;
+  border-radius: 0 0 0 0.25rem;
+  opacity: 0;
+  z-index: 2;
+  cursor: pointer;
+}
+
+.delete-btn > svg {
+  fill: #fff;
 }

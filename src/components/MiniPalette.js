@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { ReactComponent as Delete } from "../images/delete.svg";
 import classes from "../stylesheets/MiniPalette.module.css";
 
 class MiniPalette extends Component {
@@ -7,7 +8,7 @@ class MiniPalette extends Component {
     const palette = this.props.palette;
 
     return (
-      <Link className={classes.MiniPalette} to={`/palette/${palette.id}`}>
+      <div className={classes.MiniPalette}>
         <div className={classes["inner-palette"]}>
           {palette.colors.map((color) => (
             <div
@@ -18,11 +19,15 @@ class MiniPalette extends Component {
           ))}
         </div>
 
-        <div className={classes.info}>
+        <Link className={classes.info} to={`/palette/${palette.id}`}>
           <h4>{palette.paletteName}</h4>
           <span>{palette.emoji}</span>
+        </Link>
+
+        <div className={classes["delete-btn"]}>
+          <Delete />
         </div>
-      </Link>
+      </div>
     );
   }
 }
