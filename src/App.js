@@ -16,6 +16,7 @@ class App extends Component {
     this.generatePalette = this.generatePalette.bind(this);
     this.getScaledPalette = this.getScaledPalette.bind(this);
     this.getRandomColor = this.getRandomColor.bind(this);
+    this.isPaletteNameUnique = this.isPaletteNameUnique.bind(this);
   }
 
   generatePalette(routeParams) {
@@ -59,6 +60,13 @@ class App extends Component {
     return this.state.palettes[palette].colors[color];
   }
 
+  isPaletteNameUnique(name) {
+    return this.state.palettes.every(
+      (palette) =>
+        palette.paletteName.toLocaleLowerCase() !== name.toLocaleLowerCase()
+    );
+  }
+
   render() {
     return (
       <div className="App">
@@ -75,6 +83,7 @@ class App extends Component {
               <CreatePalette
                 savePalette={this.savePalette}
                 getRandomColor={this.getRandomColor}
+                isNameUnique={this.isPaletteNameUnique}
               />
             )}
           />
