@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import SelectInput from "./SelectInput";
 import { Link } from "react-router-dom";
+import SelectInput from "./SelectInput";
 import classes from "../stylesheets/Navbar.module.css";
 
 class Navbar extends Component {

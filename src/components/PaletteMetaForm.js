@@ -1,8 +1,8 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import classes from "../stylesheets/PaletteMetaForm.module.css";
-import { withRouter } from "react-router-dom";
 
 class PaletteMetaForm extends Component {
   constructor() {

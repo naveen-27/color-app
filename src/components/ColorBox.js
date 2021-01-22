@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import getContrastColor from "../utilities/luminance";
 import styled from "styled-components";
+import getContrastColor from "../utilities/luminance";
 import classes from "../stylesheets/ColorBox.module.css";
 
 class ColorBox extends Component {

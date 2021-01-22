@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import arrayMove from "array-move";
 import { motion } from "framer-motion";
+import styled from "styled-components";
 import Header from "./NewPaletteHeader";
 import Drawer from "./Drawer";
 import DraggablePalette from "./DraggablePalette";
 import PaletteMetaForm from "./PaletteMetaForm";
-import styled from "styled-components";
 import palette from "../utilities/seedColors";
 
 const PaletteWrapper = styled.div`
