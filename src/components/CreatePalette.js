@@ -1,9 +1,10 @@
 import React, { Component } from "react";
+import arrayMove from "array-move";
+import { motion } from "framer-motion";
 import Header from "./NewPaletteHeader";
 import Drawer from "./Drawer";
 import DraggablePalette from "./DraggablePalette";
 import PaletteMetaForm from "./PaletteMetaForm";
-import arrayMove from "array-move";
 import styled from "styled-components";
 import palette from "../utilities/seedColors";
 
@@ -137,7 +138,7 @@ class CreatePalette extends Component {
 
   render() {
     return (
-      <>
+      <motion.div exit={{ opacity: 0 }}>
         <PaletteWrapper ref={this.paletteRef}>
           <Header
             toggleDrawer={this.toggleDrawer}
@@ -169,7 +170,7 @@ class CreatePalette extends Component {
           getRandomColor={this.randomColor}
           inputErr={this.state.err}
         />
-      </>
+      </motion.div>
     );
   }
 }

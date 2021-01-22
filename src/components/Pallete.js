@@ -5,6 +5,7 @@ import Footer from "./Footer";
 import SnackBar from "./SnackBar";
 import generateScaledPalette from "../utilities/scaleColors";
 import classes from "../stylesheets/Palette.module.css";
+import { motion } from "framer-motion";
 
 class Palette extends Component {
   constructor() {
@@ -95,29 +96,31 @@ class Palette extends Component {
     }
 
     return (
-      <div className={classes["palette-wrapper"]}>
-        <Navbar
-          setScaleValue={this.setScaleValue}
-          setColorFormat={this.setCopyFormat}
-          showSnackbar={this.setSnackbarVisible}
-          isRangeHidden={this.props.isSinglePalette}
-        />
+      <motion.div exit={{ opacity: 0 }}>
+        <div className={classes["palette-wrapper"]}>
+          <Navbar
+            setScaleValue={this.setScaleValue}
+            setColorFormat={this.setCopyFormat}
+            showSnackbar={this.setSnackbarVisible}
+            isRangeHidden={this.props.isSinglePalette}
+          />
 
-        <div className={classes.Palette}>{colorBoxes}</div>
+          <div className={classes.Palette}>{colorBoxes}</div>
 
-        <div className={`${classes["overlay-text"]} ${overlayShowClass}`}>
-          <h1>Copied !</h1>
-          <h3>{this.state.copiedColor}</h3>
+          <div className={`${classes["overlay-text"]} ${overlayShowClass}`}>
+            <h1>Copied !</h1>
+            <h3>{this.state.copiedColor}</h3>
+          </div>
+
+          <SnackBar
+            content={this.state.snackbarText}
+            show={this.state.isVisible}
+            status={this.state.snackbarStatus}
+          />
+
+          <Footer content={palette.paletteName} emoji={palette.emoji} />
         </div>
-
-        <SnackBar
-          content={this.state.snackbarText}
-          show={this.state.isVisible}
-          status={this.state.snackbarStatus}
-        />
-
-        <Footer content={palette.paletteName} emoji={palette.emoji} />
-      </div>
+      </motion.div>
     );
   }
 }
