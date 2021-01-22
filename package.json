@@ -7,6 +7,7 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
+    "array-move": "^3.0.1",
     "chroma-js": "^2.1.0",
     "react": "^16.13.1",
     "react-color": "^2.19.3",
@@ -14,6 +15,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
     "react-sortable-hoc": "^1.11.0",
+    "react-transition-group": "^4.4.1",
     "styled-components": "^5.2.1"
   },
   "scripts": {
