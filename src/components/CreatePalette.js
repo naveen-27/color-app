@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Header from "./NewPaletteHeader";
 import Drawer from "./Drawer";
 import DraggablePalette from "./DraggablePalette";
+import PaletteMetaForm from "./PaletteMetaForm";
 import { arrayMove } from "react-sortable-hoc";
 import styled from "styled-components";
 import palette from "../utilities/seedColors";
@@ -22,8 +23,12 @@ class CreatePalette extends Component {
       isDrawerOpen: false,
       colors: palette[0].colors,
       err: null,
+      isFormOpen: false,
     };
+    this.paletteRef = React.createRef();
+
     this.toggleDrawer = this.toggleDrawer.bind(this);
+    this.toggleForm = this.toggleForm.bind(this);
     this.addColorToPalette = this.addColorToPalette.bind(this);
     this.validateColor = this.validateColor.bind(this);
     this.savePalette = this.savePalette.bind(this);
@@ -34,15 +39,12 @@ class CreatePalette extends Component {
 
   toggleDrawer() {
     this.setState({ isDrawerOpen: !this.state.isDrawerOpen });
-    document.body.classList.toggle("blur");
   }
 
   addColorToPalette(newColor) {
     const [canColorBeAdded, err] = this.validateColor(newColor.name)(
       newColor.color
     )(this.state.colors.length);
-
-    console.log(newColor);
 
     if (!canColorBeAdded) {
       this.setState({ err });
@@ -113,15 +115,18 @@ class CreatePalette extends Component {
     } while (!isColorUnique);
   }
 
-  savePalette() {
-    let paletteName = "Test Palette";
-    const newPalette = {
-      paletteName,
-      id: paletteName.toLocaleLowerCase().replace(" ", "-"),
-      emoji: "🧨",
-      colors: this.state.colors,
-    };
-    this.props.savePalette(newPalette);
+  savePalette(newPalette) {
+    const updatedPalette = { ...newPalette, colors: this.state.colors };
+    this.props.savePalette(updatedPalette);
+  }
+
+  toggleForm() {
+    if (this.state.isFormOpen) {
+      this.paletteRef.current.classList.remove("blur");
+    } else {
+      this.paletteRef.current.classList.add("blur");
+    }
+    this.setState({ isFormOpen: !this.state.isFormOpen, isDrawerOpen: false });
   }
 
   onSortEnd = ({ oldIndex, newIndex }) => {
@@ -133,11 +138,11 @@ class CreatePalette extends Component {
   render() {
     return (
       <>
-        <PaletteWrapper>
+        <PaletteWrapper ref={this.paletteRef}>
           <Header
-            toggleForm={this.toggleDrawer}
+            toggleDrawer={this.toggleDrawer}
             isDrawerOpen={this.state.isDrawerOpen}
-            savePalette={this.savePalette}
+            toggleForm={this.toggleForm}
           />
 
           <DraggablePalette
@@ -145,8 +150,16 @@ class CreatePalette extends Component {
             deleteColor={this.deleteColor}
             axis="xy"
             onSortEnd={this.onSortEnd}
+            distance={1}
           />
         </PaletteWrapper>
+
+        <PaletteMetaForm
+          isNameUnique={this.props.isNameUnique}
+          savePalette={this.savePalette}
+          toggleForm={this.toggleForm}
+          isFormOpen={this.state.isFormOpen}
+        />
 
         <Drawer
           open={this.state.isDrawerOpen}

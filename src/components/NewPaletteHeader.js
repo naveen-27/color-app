@@ -8,16 +8,10 @@ class NewPaletteHeader extends Component {
   constructor() {
     super();
     this.handleClick = this.handleClick.bind(this);
-    this.save = this.save.bind(this);
   }
 
   handleClick() {
-    this.props.toggleForm();
-  }
-
-  save() {
-    this.props.savePalette();
-    this.props.history.push("/");
+    this.props.toggleDrawer();
   }
 
   render() {
@@ -45,7 +39,11 @@ class NewPaletteHeader extends Component {
           >
             GO BACK
           </Button>
-          <Button variant="contained" color="secondary" onClick={this.save}>
+          <Button
+            variant="contained"
+            color="secondary"
+            onClick={this.props.toggleForm}
+          >
             SAVE PALETTE
           </Button>
         </div>

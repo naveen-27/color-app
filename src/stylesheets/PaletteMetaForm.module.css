@@ -1,0 +1,54 @@
+.MetaForm {
+  position: absolute;
+  width: min(100%, 450px);
+  top: 50%;
+  left: 50%;
+  transform: scale(0) translate(-50%, -50%);
+  transition: transform 200ms ease-in-out;
+  transform-origin: 50% 50%;
+  background-color: #fff;
+  padding: 1rem 1.5rem;
+  border-radius: 0.5rem;
+}
+
+.title {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #293a4b;
+}
+
+.muted-text {
+  color: #a4a8a9;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  padding: 1rem 0 0 0;
+}
+
+.form button {
+  margin-top: 1rem;
+}
+
+.btn-grp {
+  margin-left: auto;
+}
+
+.btn-grp > *:last-child {
+  margin-left: 1rem;
+}
+
+.Inputs {
+  display: flex;
+  transition: transform 300ms ease;
+}
+
+.Inputs > * {
+  flex: 0 0 100%;
+}
+
+.open {
+  transform: scale(1) translate(-50%, -50%);
+}
