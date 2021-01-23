@@ -64,5 +64,10 @@
 @media (max-width: 650px) {
   .Palette {
     grid-template-columns: 1fr;
+    height: max(100vh, 700px);
+  }
+
+  .overlay-text > h1 {
+    font-size: 3rem;
   }
 }

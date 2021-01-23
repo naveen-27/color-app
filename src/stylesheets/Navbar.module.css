@@ -29,3 +29,24 @@
 .range {
   width: 300px;
 }
+
+@media (max-width: 800px) {
+  .Header {
+    flex-direction: column;
+    gap: 0.5rem;
+    height: auto;
+    padding: 0;
+  }
+
+  .Header > * {
+    width: 100%;
+  }
+
+  .range {
+    width: 70%;
+  }
+
+  .Logo {
+    text-align: center;
+  }
+}

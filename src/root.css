@@ -9,6 +9,7 @@
 body {
   min-height: 100vh;
   font-family: "Commissioner", sans-serif;
+  position: relative;
   overflow-x: hidden;
 }
 
@@ -20,14 +21,23 @@ body {
 .fade-enter {
   opacity: 0;
 }
+
 .fade-enter-active {
   opacity: 1;
   transition: opacity 500ms ease-in;
 }
+
 .fade-exit {
   opacity: 1;
 }
+
 .fade-exit-active {
   opacity: 0;
   transition: opacity 500ms ease-in;
+}
+
+@media (max-height: 600px) {
+  body {
+    overflow-y: scroll;
+  }
 }
