@@ -1,4 +1,4 @@
-#React Color App
+# React Color App
 
 [React Color App](https://react-colors-app.vercel.app/), a color picker made with react. <br>
 
