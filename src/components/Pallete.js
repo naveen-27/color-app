@@ -101,7 +101,12 @@ class Palette extends Component {
     }
 
     return (
-      <motion.div exit={{ opacity: 0 }}>
+      <motion.div
+        initial={{ x: 0, opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        exit={{ x: -100, opacity: 0 }}
+        transition={{ duration: 0.25, ease: "easeIn" }}
+      >
         <div className={classes["palette-wrapper"]}>
           <Navbar
             setScaleValue={this.setScaleValue}
