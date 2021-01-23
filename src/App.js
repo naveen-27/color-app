@@ -42,11 +42,6 @@ class App extends Component {
         (palette) => palette.id === paletteId
       );
       const color = foundPalette.colors.find((color) => color.name === colorId);
-
-      if (!foundPalette && !color) {
-        return;
-      }
-
       const singleScaledPalette = scaleIndiviualColor(color.color, color.name);
 
       const palette = {
