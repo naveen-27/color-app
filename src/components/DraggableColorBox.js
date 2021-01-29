@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import styled from "styled-components";
 import { SortableElement } from "react-sortable-hoc";
 import { ReactComponent as Delete } from "../images/delete.svg";
@@ -30,7 +30,7 @@ const Info = styled.div`
   }
 `;
 
-class DraggableColorBox extends Component {
+class DraggableColorBox extends PureComponent {
   constructor() {
     super();
     this.delete = this.delete.bind(this);
