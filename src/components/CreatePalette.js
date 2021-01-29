@@ -26,7 +26,6 @@ class CreatePalette extends Component {
       err: null,
       isFormOpen: false,
     };
-    this.paletteRef = React.createRef();
 
     this.toggleDrawer = this.toggleDrawer.bind(this);
     this.toggleForm = this.toggleForm.bind(this);
@@ -122,11 +121,6 @@ class CreatePalette extends Component {
   }
 
   toggleForm() {
-    if (this.state.isFormOpen) {
-      this.paletteRef.current.classList.remove("blur");
-    } else {
-      this.paletteRef.current.classList.add("blur");
-    }
     this.setState({ isFormOpen: !this.state.isFormOpen, isDrawerOpen: false });
   }
 
@@ -137,6 +131,11 @@ class CreatePalette extends Component {
   };
 
   render() {
+    const blurStyle = {
+      filter: "blur(5px)",
+      pointerEvents: "none",
+    };
+
     return (
       <motion.div
         initial={{ x: 0, opacity: 0 }}
@@ -144,7 +143,7 @@ class CreatePalette extends Component {
         exit={{ x: -100, opacity: 0 }}
         transition={{ duration: 0.25, ease: "easeIn" }}
       >
-        <PaletteWrapper ref={this.paletteRef}>
+        <PaletteWrapper style={this.state.isFormOpen ? blurStyle : {}}>
           <Header
             toggleDrawer={this.toggleDrawer}
             isDrawerOpen={this.state.isDrawerOpen}
@@ -169,7 +168,7 @@ class CreatePalette extends Component {
 
         <Drawer
           open={this.state.isDrawerOpen}
-          toggleForm={this.toggleDrawer}
+          toggleDrawer={this.toggleDrawer}
           addColor={this.addColorToPalette}
           clearPalette={this.clearPalette}
           getRandomColor={this.randomColor}
