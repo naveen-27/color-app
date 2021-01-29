@@ -19,7 +19,7 @@ class Drawer extends Component {
   }
 
   handleClick() {
-    this.props.toggleForm();
+    this.props.toggleDrawer();
   }
 
   handleColorChange(newColor) {
